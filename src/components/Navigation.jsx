@@ -15,7 +15,9 @@ const Title = styled.h3 `
 `;
 
 const DivideLine = styled.hr `
-    color: #EEEEEE;
+    background: #EEEEEE;
+    height: 1px;
+    border: 0;
 `;
 
 export default Navigation;
