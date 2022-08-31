@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const ThemeButton = ({themeName}) => {
-    return <ThemeButtonStyled>{themeName}</ThemeButtonStyled>
+const ThemeButton = ({themeName, onClick}) => {
+    return <ThemeButtonStyled onClick={onClick}>{themeName}</ThemeButtonStyled>
 };
 
 const ThemeButtonStyled = styled.div`
@@ -13,6 +13,7 @@ font-weight: 700;
 font-size: 20px;
 line-height: 26px;
 color: #FFFFFF;
+cursor: pointer;
 `;
 
 export default ThemeButton;
