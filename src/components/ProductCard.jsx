@@ -1,18 +1,26 @@
 import styled from "styled-components";
 
 
-const ProductCard = ({name, description, thumbnail} ) => {
+const ProductCard = ({id, setProducts, name, description, thumbnail, onClick} ) => {
+
+
     return (
-    <div>
+    <ProductCardStyle onClick={onClick}>
         <ProductImg
         width="200" 
-        src={thumbnail} alt={name} />
+        src={thumbnail} alt={name}
+         />
         <ProductName>{name}</ProductName>
         <ProductDesc>{description}</ProductDesc>
-    </div>
+    </ProductCardStyle>
     );
 }
 
+
+const ProductCardStyle = styled.div`
+    padding-bottom: 40px;  
+    margin: 0 24px;
+`;
 
 const ProductImg = styled.img `
     object-fit: cover;
@@ -32,5 +40,6 @@ const ProductDesc = styled.div `
     padding-top: 12px;
     white-space: pre-wrap;
 `
+
 
 export default ProductCard;
