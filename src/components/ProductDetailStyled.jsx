@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { mockTheme1Products, mockTheme2Products } from "../data/mockData";
 import { useState, useEffect } from "react";
 import GoBackButton from "../components/GoBackButton";
 
@@ -82,9 +81,6 @@ const ProductPrice = styled.div `
     padding-left: 24px;
 `
 
-    /* background: none;
-	color: inherit;
-	border: solid; */
 const MenuSelectButton = styled.div `
     display: inline-flex;
     background-color: ${props => (props.btnColor ? '#EEEEEE' : 'white')};
