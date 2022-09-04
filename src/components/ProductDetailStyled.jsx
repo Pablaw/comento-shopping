@@ -7,6 +7,8 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
 
     const [selMenu, setSelMenu] = useState();
     const [meunAlt, setMenuAlt] = useState();
+    const [btn1Selected, setBtn1Selected] = useState(true);
+    const [btn2Selected, setBtn2Selected] = useState();
 
     useEffect(() => {
         setTimeout(() => {
@@ -19,13 +21,15 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
         if (tno === 1) {
             setSelMenu(detailImg);
             setMenuAlt("productDetailImage");
-
+            setBtn1Selected(true);
+            setBtn2Selected(false);
         } else if (tno === 2) {
             setSelMenu(reviewImg);
             setMenuAlt("productReviewComment");
+            setBtn2Selected(true);
+            setBtn1Selected(false);
         }
         }
-    
     return (
     <div>
         <ProductCardStyle>
@@ -37,8 +41,15 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
             <ProductName>{name}</ProductName>
             <ProductPrice>{price}</ProductPrice>
 
-            <MenuSelectButton onClick={() => onClickSelectButton(1)}>상품 설명</MenuSelectButton>
-            <MenuSelectButton onClick={() => onClickSelectButton(2)}>상품 후기</MenuSelectButton>
+            <MenuSelectButton 
+            fontWeight={btn1Selected}
+            btnColor={btn1Selected} 
+            onClick={() => onClickSelectButton(1)}>상품 설명</MenuSelectButton>
+            <MenuSelectButton 
+            fontWeight={btn2Selected} 
+            btnColor={btn2Selected} 
+            onClick={() => onClickSelectButton(2)}>상품 후기</MenuSelectButton>
+            
             <DetailImgContainer>
                 <ProductDetailImg
                 src={selMenu} alt={meunAlt} />
@@ -70,15 +81,20 @@ const ProductPrice = styled.div `
     padding-top: 8px;
     padding-left: 24px;
 `
-const MenuSelectButton = styled.button `
-    background: none;
+
+    /* background: none;
 	color: inherit;
-	border: solid;
-    border-width: 1px;
-    border-color: #EEEEEE;
-    width: 195px;
+	border: solid; */
+const MenuSelectButton = styled.div `
+    display: inline-flex;
+    background-color: ${props => (props.btnColor ? '#EEEEEE' : 'white')};
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #EEEEEE;
+    width: 193px;
     height: 48px;
     font-size: 16px;
+    font-weight: ${props => (props.fontWeight ? '700' : '400')};
     margin-top: 24px;
 `
 
@@ -91,7 +107,8 @@ const DetailImgContainer = styled.div `
 const ProductDetailImg = styled.img `
     object-fit: cover;
     width: 87%;
-    padding: 25px 24px;
+    padding: 0 24px;
+    padding-top: 25px;
 `
 
 const BasketButton = styled.div `
