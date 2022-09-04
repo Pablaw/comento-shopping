@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { mockTheme1Products, mockTheme2Products } from "../data/mockData";
 import { useState, useEffect } from "react";
 import GoBackButton from "../components/GoBackButton";
 
@@ -42,11 +41,11 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
             <ProductPrice>{price}</ProductPrice>
 
             <MenuSelectButton 
-            fontWeight={btn1Selected}
+            fontBoldOrNot={btn1Selected}
             btnColor={btn1Selected} 
             onClick={() => onClickSelectButton(1)}>상품 설명</MenuSelectButton>
             <MenuSelectButton 
-            fontWeight={btn2Selected} 
+            fontBoldOrNot={btn2Selected} 
             btnColor={btn2Selected} 
             onClick={() => onClickSelectButton(2)}>상품 후기</MenuSelectButton>
             
@@ -62,19 +61,19 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
 
 const ProductCardStyle = styled.div`
     padding-bottom: 40px;  
-`;
+`
 
 const ProductImg = styled.img `
     object-fit: cover;
     width: 100%;
-`;
+`
 
 const ProductName = styled.div `
     font-size: 20px;
     font-weight: bold;
     padding-top: 24px;
     padding-left: 24px;
-`;
+`
 
 const ProductPrice = styled.div `
     font-size: 16px;
@@ -82,9 +81,6 @@ const ProductPrice = styled.div `
     padding-left: 24px;
 `
 
-    /* background: none;
-	color: inherit;
-	border: solid; */
 const MenuSelectButton = styled.div `
     display: inline-flex;
     background-color: ${props => (props.btnColor ? '#EEEEEE' : 'white')};
@@ -94,7 +90,7 @@ const MenuSelectButton = styled.div `
     width: 193px;
     height: 48px;
     font-size: 16px;
-    font-weight: ${props => (props.fontWeight ? '700' : '400')};
+    font-weight: ${props => (props.fontBoldOrNot ? '700' : '400')};
     margin-top: 24px;
 `
 
