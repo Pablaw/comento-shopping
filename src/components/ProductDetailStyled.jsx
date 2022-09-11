@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import GoBackButton from "../components/GoBackButton";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, setProducts} ) => {
 
@@ -8,6 +9,7 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
     const [meunAlt, setMenuAlt] = useState();
     const [btn1Selected, setBtn1Selected] = useState(true);
     const [btn2Selected, setBtn2Selected] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {
@@ -29,6 +31,10 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
             setBtn1Selected(false);
         }
         }
+
+    const onClickBasketButton = () => {
+        navigate('/basket');
+    }
     return (
     <div>
         <ProductCardStyle>
@@ -53,7 +59,8 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
                 <ProductDetailImg
                 src={selMenu} alt={meunAlt} />
             </DetailImgContainer>
-            <BasketButton>장바구니 담기</BasketButton>
+            <BasketButton 
+            onClick={() => onClickBasketButton()}>장바구니 담기</BasketButton>
         </ProductCardStyle>
     </div>
     );
