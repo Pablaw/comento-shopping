@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import GoBackButton from "../components/GoBackButton";
-import { useNavigate } from "react-router-dom";
-import * as strorage from "../utils/storage";
 import { useParams } from "react-router-dom";
 import { getProductDetail } from "../data/mockData";
 
@@ -22,7 +20,7 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
     const [meunAlt, setMenuAlt] = useState();
     const [btn1Selected, setBtn1Selected] = useState(true);
     const [btn2Selected, setBtn2Selected] = useState();
-    const navigate = useNavigate();
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -45,12 +43,7 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
         }
         }
 
-    const onClickBasketButton = () => {
-        //장바구니에 아이템을 담는다.
-        strorage.addBasket(product);
-        // 장바구니 페이지로 이동한다.
-        navigate('/basket');
-    }
+
     return (
     <div>
         <ProductCardStyle>
@@ -75,8 +68,6 @@ const ProductDetailStyled = ({id, name, thumbnail, detailImg, reviewImg, price, 
                 <ProductDetailImg
                 src={selMenu} alt={meunAlt} />
             </DetailImgContainer>
-            <BasketButton 
-            onClick={onClickBasketButton}>장바구니 담기</BasketButton>
         </ProductCardStyle>
     </div>
     );
@@ -130,11 +121,6 @@ const ProductDetailImg = styled.img `
     padding-top: 25px;
 `
 
-const BasketButton = styled.div `
-    padding: 24px 150px;
-    background-color: #24DBAF;
-    font-size: 16px;
-    font-weight: 700;
-`
+
 
 export default ProductDetailStyled;

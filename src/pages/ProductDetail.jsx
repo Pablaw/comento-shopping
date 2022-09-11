@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getProductDetail } from "../data/mockData";
 import Navigation from "../components/Navigation";
 import ProductDetailStyled from "../components/ProductDetailStyled";
 import PageLoadImage from "../components/PageLoadImage";
+import * as strorage from "../utils/storage";
 
 
 const ProductDetail = () => {
@@ -15,6 +17,8 @@ const ProductDetail = () => {
     // console.log(useParams(), productId, "str");
     const [product, setproduct] = useState();
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         setTimeout(() => {
             const result = getProductDetail(productID);
@@ -22,6 +26,13 @@ const ProductDetail = () => {
         }, 1000);
         
     }, []);
+
+    const onClickBasketButton = () => {
+        //장바구니에 아이템을 담는다.
+        strorage.addBasket(product);
+        // 장바구니 페이지로 이동한다.
+        navigate('/basket');
+    }
 
     return (
         <PageSize>
@@ -40,6 +51,8 @@ const ProductDetail = () => {
                     detailImg={product.detailImg}
                     reviewImg={product.reviewImg}
                 />) : <PageLoadImage />}
+                <BasketButton 
+                onClick={() => onClickBasketButton(product)}>장바구니 담기</BasketButton>
             </Content>
             
         </PageSize>
@@ -65,4 +78,12 @@ const PageSize = styled.div `
 
 const Content = styled.section `
 `
+
+const BasketButton = styled.div `
+    padding: 24px 150px;
+    background-color: #24DBAF;
+    font-size: 16px;
+    font-weight: 700;
+`
+
 export default ProductDetail;

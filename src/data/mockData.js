@@ -23,7 +23,7 @@ export const mockTheme1Products = [
         detailImg:
         "https://raw.githubusercontent.com/Pablaw/contentRepo/main/img/comento/productDetail1.svg",
         price:
-        "21,800원",
+        "19,800원",
     },
     {
       id: 10,
