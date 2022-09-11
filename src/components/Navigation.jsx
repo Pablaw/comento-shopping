@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Navigation = () => {
+const Navigation = ({name}) => {
     return (
         <div>
-            <Title>코멘토 쇼핑</Title>
+            <Title>{name}</Title>
             <DivideLine />
         </div>
     );

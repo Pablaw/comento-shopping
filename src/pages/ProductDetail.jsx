@@ -26,7 +26,7 @@ const ProductDetail = () => {
     return (
         <PageSize>
             <div className="header" >
-                <Navigation />
+                <Navigation name="코멘토 쇼핑" />
             </div>
             
             <Content>
